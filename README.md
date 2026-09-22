@@ -56,3 +56,7 @@ See [the verification record](docs/verification.md) for behavioral comparisons, 
 Batch processing validates input folders and matching ground-truth names, supports paths containing spaces, skips completed recordings, and stops with the child process exit code if reconstruction fails. Empty, degenerate, or malformed event arrays are not validated by the reconstruction algorithms.
 
 Maintained by [nazeeh111](https://github.com/nazeeh111).
+
+## License
+
+Existing license terms and copyright notices are preserved in [LICENSE](LICENSE).
