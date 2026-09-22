@@ -1,0 +1,35 @@
+{
+  "baseline": "30195c6155b730511dd90172bf420a21dca8ea25",
+  "source_sha256": {
+    "utils.py": "2bd156ddd8f66d94c163a314847ec934c64dd5b62568d0f10e5708469f4bb850",
+    "run_offline.py": "b2d208f7b488155efe5949f02057e4ee49311de61d698a6d136b15bf92cba7cf",
+    "run_online.py": "e4d34d762f1045df7e7424fb6de77d840ad3b8643f0e19ff4d10c636cdbe1ac3"
+  },
+  "identical_wav_files": [
+    {
+      "file": "reconstructed_44khz.wav",
+      "sample_rate": 44100,
+      "samples": 44100,
+      "sha256": "5f59bf11c222990a96b420538418f06f395c1495269c2cb3f0f05a94615d8578"
+    },
+    {
+      "file": "reconstructed_pesq1.02_stoi0.09.wav",
+      "sample_rate": 16000,
+      "samples": 16000,
+      "sha256": "36b22c204281799543abe68baa19d16883c63343385e167d4512e8b33f40d13c"
+    },
+    {
+      "file": "reference.wav",
+      "sample_rate": 16000,
+      "samples": 16000,
+      "sha256": "fd0b77ba213f2e55e7ba936ba26bab7d0569eaacdd67bfcc38fe5fea6e6e89cc"
+    },
+    {
+      "file": "reference_16khz.wav",
+      "sample_rate": 16000,
+      "samples": 16000,
+      "sha256": "cc6da532d46585dabd78435a3d224c3a2350229fa8cb088efa4457ecc9de8b37"
+    }
+  ],
+  "scope": "One seeded synthetic 1-second recording; not scientific dataset validation."
+}

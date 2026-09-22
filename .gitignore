@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+EventRecordings/
+GroundTruth/
+Output/
+
+.verification/
+*.npy
+*.wav
+*.mp3
+*.zip

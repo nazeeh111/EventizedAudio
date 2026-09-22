@@ -1,0 +1,7 @@
+{
+  "baseline_failed_child": "still polling after 3 seconds; timed out",
+  "updated_failed_child_exit": 9,
+  "real_batch": "passed from another working directory with spaces in paths",
+  "generated_wav_comparisons": 3,
+  "resumed_batch": "skipped existing output"
+}
