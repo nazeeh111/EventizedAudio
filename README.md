@@ -8,7 +8,7 @@
 
 ## From events to audio
 
-Event cameras report pixel-level brightness changes as a stream of events. The original research uses this stream to measure fast motion in laser speckle patterns and reconstruct audio. Two paths are included: offline dense optical flow, and online time-gradient optical flow.
+Event cameras report pixel-level brightness changes as a stream of events. The reconstruction uses this stream to measure fast motion in laser speckle patterns and reconstruct audio. Two paths are included: offline dense optical flow, and online time-gradient optical flow.
 
 <img src="assets/vibration-sensing.png" alt="Optical vibration sensing illustration showing event-based optical vibration sensing" width="100%">
 
@@ -26,7 +26,7 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-For **online** processing, also install the original project's [Metavision SDK for Python](https://docs.prophesee.ai/4.6.2/index.html) in a supported environment. It provides `metavision_sdk_cv`; it is not included in the pip requirements. Offline processing does not need that SDK.
+For **online** processing, also install [Metavision SDK for Python](https://docs.prophesee.ai/4.6.2/index.html) in a supported environment. It provides `metavision_sdk_cv`; it is not included in the pip requirements. Offline processing does not need that SDK.
 
 Download recordings and matching ground-truth audio from the [research dataset](https://berkeley.box.com/s/4kdfmdx84xhot3145qkhnh1s2qg5w55e). Recordings must be NumPy structured arrays containing `x`, `y`, `t` (microseconds), and `p` (0/1 polarity). Both algorithms require matching ground-truth audio for alignment and evaluation.
 
@@ -45,9 +45,9 @@ Use `online` in place of `offline` for the SDK-based method. For a folder:
 python eventized_audio.py batch --event_dir EventRecordings --gt_dir GroundTruth --out_dir Output --mode offline
 ```
 
-The original `run_offline.py`, `run_online.py`, and `launch_runs.py` commands still work. `python eventized_audio.py --help` shows the new entry point; `python eventized_audio.py offline --help` shows the original offline options once dependencies are installed.
+The existing `run_offline.py`, `run_online.py`, and `launch_runs.py` commands still work. `python eventized_audio.py --help` shows the new entry point; `python eventized_audio.py offline --help` shows the offline options once dependencies are installed.
 
-The pipeline writes a 44.1 kHz WAV and a 16 kHz WAV whose filename includes PESQ and STOI speech-quality scores. It also writes a 16 kHz ground-truth WAV beside the input ground truth. Preserve your source data accordingly. Defaults, processing parameters, output naming, and side effects match upstream.
+The pipeline writes a 44.1 kHz WAV and a 16 kHz WAV whose filename includes PESQ and STOI speech-quality scores. It also writes a 16 kHz ground-truth WAV beside the input ground truth. Preserve your source data accordingly. Defaults, processing parameters, output naming, and side effects retain the existing computational behavior.
 
 ## Verification and limits
 
@@ -59,4 +59,4 @@ Maintained by [nazeeh111](https://github.com/nazeeh111).
 
 ## License
 
-Existing license terms and copyright notices are preserved in [LICENSE](LICENSE).
+Available under the [MIT license](LICENSE).
