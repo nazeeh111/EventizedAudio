@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.svg" alt="EventizedAudio: event-based optical vibration sensing" width="100%"></p>
 
-**Development history:** Developed locally before publication. These repositories were uploaded together, so their GitHub publication dates do not indicate when development began.
+**Development history:** Developed locally using Git before publication. These projects were published to GitHub together, so similar upload dates do not indicate when development began.
 
 **Reconstruct sound from the small vibrations captured by an event camera.** EventizedAudio provides offline and online reconstruction pipelines, a single command-line entry point, and a reproducible Python environment.
 
