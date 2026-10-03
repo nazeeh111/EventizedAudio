@@ -1,8 +1,6 @@
 <p align="center"><img src="assets/banner.svg" alt="EventizedAudio: event-based optical vibration sensing" width="100%"></p>
 
-This repository packages [Event2Audio](https://github.com/dgalor/Event2Audio/tree/30195c6155b730511dd90172bf420a21dca8ea25), by **Mingxuan Cai, Dekel Galor, Amit Kohli, Jacob Yates and Laura Waller**, for event-based optical vibration sensing. EventizedAudio adds the unified command, batch failure handling, reproducible dependency pins, synthetic parity checks and documentation. The original methods, datasets and reported research results belong to the cited source. [Source and additions](NOTICE.md).
-
-**Reconstruct sound from the small vibrations captured by an event camera.** EventizedAudio provides offline and online reconstruction pipelines, a single command-line entry point, and a reproducible Python environment.
+**Reconstruct sound from the small vibrations captured by an event camera.** EventizedAudio provides offline and online reconstruction pipelines. Its unified command adds batch failure handling, pinned dependencies and synthetic parity checks.
 
 [Research data](https://berkeley.box.com/s/4kdfmdx84xhot3145qkhnh1s2qg5w55e) · [Verification and limits](docs/verification.md)
 
@@ -57,6 +55,8 @@ Batch processing validates input folders and matching ground-truth names, suppor
 
 Maintained by [nazeeh111](https://github.com/nazeeh111).
 
-## License
+## Source and license
 
-Original implementation: [MIT license](LICENSE). New additions: [LICENSE-branding](LICENSE-branding). See [source and additions](NOTICE.md) for external component and dataset limits.
+Based on [Event2Audio](https://github.com/dgalor/Event2Audio/tree/30195c6155b730511dd90172bf420a21dca8ea25) by **Mingxuan Cai, Dekel Galor, Amit Kohli, Jacob Yates and Laura Waller**. [Source and contribution details](NOTICE.md).
+
+Original implementation: [MIT license](LICENSE). New additions: [LICENSE-branding](LICENSE-branding). External component and dataset limits are recorded in the source notice.
