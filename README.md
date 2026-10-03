@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.svg" alt="EventizedAudio: event-based optical vibration sensing" width="100%"></p>
 
-**Development history:** Developed locally using Git before publication. These projects were published to GitHub together, so similar upload dates do not indicate when development began.
+This repository packages [Event2Audio](https://github.com/dgalor/Event2Audio/tree/30195c6155b730511dd90172bf420a21dca8ea25), by **Mingxuan Cai, Dekel Galor, Amit Kohli, Jacob Yates and Laura Waller**, for event-based optical vibration sensing. EventizedAudio adds the unified command, batch failure handling, reproducible dependency pins, synthetic parity checks and documentation. The original methods, datasets and reported research results belong to the cited source. [Source and additions](NOTICE.md).
 
 **Reconstruct sound from the small vibrations captured by an event camera.** EventizedAudio provides offline and online reconstruction pipelines, a single command-line entry point, and a reproducible Python environment.
 
@@ -59,4 +59,4 @@ Maintained by [nazeeh111](https://github.com/nazeeh111).
 
 ## License
 
-Available under the [MIT license](LICENSE).
+Original implementation: [MIT license](LICENSE). New additions: [LICENSE-branding](LICENSE-branding). See [source and additions](NOTICE.md) for external component and dataset limits.
