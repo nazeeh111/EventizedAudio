@@ -64,11 +64,11 @@ The existing `run_offline.py`, `run_online.py`, and `launch_runs.py` commands st
 
 The requested `--out_path` is a naming prefix. A successful new reconstruction writes these files:
 
-| File | Contents |
-| --- | --- |
-| `Output/abespeech_chipbag_hat_offline_44khz.wav` | Reconstructed audio at 44.1 kHz |
-| `Output/abespeech_chipbag_hat_offline_pesq<SCORE>_stoi<SCORE>.wav` | Reconstructed audio at 16 kHz, named with its evaluation scores |
-| `GroundTruth/abespeech_gt_16khz.wav` | Converted reference audio, written **beside the input reference** |
+For the command above, `PREFIX` means `Output/abespeech_chipbag_hat_offline`:
+
+- **44.1 kHz reconstruction:** `PREFIX_44khz.wav`.
+- **16 kHz reconstruction:** `PREFIX_pesq<SCORE>_stoi<SCORE>.wav`, named with its evaluation scores.
+- **Converted reference:** `abespeech_gt_16khz.wav`, written **beside the input reference** in `GroundTruth/`.
 
 PESQ and STOI compare the reconstruction with the reference audio. A filename containing scores is not an independent validation of the research method. Use a working copy of the reference directory: its derived `_16khz.wav` can be replaced by a later run. The unsuffixed requested output is normally not created.
 
