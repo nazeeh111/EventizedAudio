@@ -70,13 +70,13 @@ For the command above, `PREFIX` means `Output/abespeech_chipbag_hat_offline`:
 - **16 kHz reconstruction:** `PREFIX_pesq<SCORE>_stoi<SCORE>.wav`, named with its evaluation scores.
 - **Converted reference:** `abespeech_gt_16khz.wav`, written **beside the input reference** in `GroundTruth/`.
 
-PESQ and STOI compare the reconstruction with the reference audio. A filename containing scores is not an independent validation of the research method. Use a working copy of the reference directory: its derived `_16khz.wav` can be replaced by a later run. The unsuffixed requested output is normally not created.
+PESQ and STOI compare the reconstruction with the reference audio. A filename containing scores is not an independent validation of the research method. Use a writable working copy of the reference directory. Direct `offline`/`online` commands can replace its derived `_16khz.wav`; `batch` instead reuses an identical valid regular cache or refuses a conflicting one. See [batch preservation and recovery](docs/batch-preservation.md). The unsuffixed requested output is normally not created.
 
 ### Recover from a failed run
 
 - **Missing reference:** batch pairs the portion before the first underscore with `<identifier>_gt.wav` or `<identifier>_gt.mp3`. Keep one matching reference per identifier.
 - **Missing SDK:** use `offline` if `metavision_sdk_cv` is unavailable. It is required only for `online`.
-- **Interrupted or incomplete output:** retry into a **new `--out_dir`**. The current batch resume rule can skip a recording after finding just one matching file; a lone `_44khz.wav` does not establish completion.
+- **Interrupted or incomplete output:** `batch` refuses an occupied incomplete set with exit 2; retry into a **new `--out_dir`**. A lone `_44khz.wav` is not completion. A conflicting reference cache also requires a fresh working copy of the reference directory. See [the exact skip/refusal and partial-publication policy](docs/batch-preservation.md).
 - **Existing unsuffixed output:** choose a new `--out_path`. If that exact file already exists, the inherited single-recording script evaluates it instead of reconstructing again.
 
 ## Try without research data
@@ -91,9 +91,9 @@ It generates 250,000 events and a reference signal locally, runs the retained ba
 
 ## Verification and limits
 
-See [the verification record](docs/verification.md) for behavioral comparisons, the preserved processing interfaces, and environment limitations. Defaults, processing parameters, and WAV output behavior are preserved.
+See [the verification record](docs/verification.md) for behavioral comparisons, the preserved processing interfaces, and environment limitations. Defaults, numerical processing and successful WAV bytes/names are preserved for the verified synthetic control. Batch output admission, cache reuse and failure publication follow the separate [preservation policy](docs/batch-preservation.md).
 
-Batch processing validates input folders and matching ground-truth names, supports paths containing spaces, skips completed recordings, and stops with the child process exit code if reconstruction fails. Empty, degenerate, or malformed event arrays are not validated by the reconstruction algorithms.
+Batch processing validates input folders and unique matching ground-truth names, supports paths containing spaces, skips intact output pairs, and stops with the child process exit code if reconstruction fails. A child failure publishes no staged products for that recording; publication errors can retain new partial products, as described in the policy. Empty, degenerate, or malformed event arrays are not validated by the reconstruction algorithms.
 
 Maintained by [nazeeh111](https://github.com/nazeeh111).
 

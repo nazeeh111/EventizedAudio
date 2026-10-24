@@ -15,6 +15,12 @@ Verified on 2026-09-22 with Python 3.12.13 on Apple Silicon macOS, CPU execution
 - A real batch reconstruction succeeded from another working directory with spaces in all input/output paths. All three generated WAVs matched the baseline, and a second batch invocation skipped the completed recording.
 - A disposable failing child reproduced the prior launcher’s endless polling: it timed out after three seconds. The updated launcher returned the child’s exit code 9 within the same deadline. [Batch evidence](batch-verification.json).
 
+## Batch-preservation follow-up: 2026-10-23
+
+The historical results above describe the earlier launcher. The batch preservation update changes output admission, cache reuse and publication policy; it does not retain the earlier one-file resume heuristic. See [the current policy and recovery guide](batch-preservation.md). Historical evidence JSON is retained unchanged.
+
+Independent candidate checks passed 20 tests (18 batch preservation/native-writer cases and two unchanged entrypoint cases). A fresh one-second generated 250,000-event fixture ran the unchanged real offline reconstruction directly and through staged batch dispatch: both reconstruction WAVs and the derived reference were byte-identical; the input reference was unchanged. These are synthetic CPU checks, not a research dataset or speech-quality benchmark. Online SDK execution remains unverified.
+
 ## Dependency compatibility
 
 Unrestricted latest packages failed inside the unchanged high-pass filter because NumPy 2.5 rejects conversion of its one-item cutoff array to a scalar. The verified environment pins NumPy 1.26.4, SciPy 1.13.1, OpenCV 4.10.0.84, librosa 0.11.0, and compatible dependencies. Install the supplied requirements rather than upgrading numerical packages without retesting.
@@ -24,8 +30,8 @@ Unrestricted latest packages failed inside the unchanged high-pass filter becaus
 - The synthetic fixture proves parity for that input and environment; it is not a speech-recovery quality benchmark or a universal equivalence proof.
 - The original research dataset and event-camera hardware were not used. Research results have not been independently reproduced.
 - Online reconstruction was not executed because `metavision_sdk_cv` is unavailable in the local environment. Its source remains unchanged and its command dispatch is covered.
-- Batch processing retains the existing naming convention and resume heuristic. It now runs each child directly without a shell and reports child failures immediately; successful numerical processing and output filenames are preserved. Online batch reconstruction still requires the unverified SDK.
-- Malformed/empty events and zero-motion cases retain the existing numerical limitations. Destination folders must exist, and the pipeline writes a converted ground-truth file beside the input.
+- Batch processing retains the naming convention and direct child invocation, but now skips only intact mono PCM16 reconstruction pairs and uses staged, no-replace publication. Refusals, cache policy, required filesystem capabilities and partial-publication recovery are documented separately. Online batch reconstruction still requires the unverified SDK.
+- Malformed/empty events and zero-motion cases retain the existing numerical limitations. Direct pipeline destination folders must exist. Batch creates its output folder, stages beside output/reference destinations and requires both parent directories writable plus hard-link support; its converted reference is published beside the selected input reference.
 - The full pinned environment was tested on macOS ARM64 only. Other operating systems, Python versions, and numerical environments are unverified.
 
 ## Reproduce
