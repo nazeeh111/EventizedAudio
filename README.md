@@ -99,6 +99,6 @@ Maintained by [nazeeh111](https://github.com/nazeeh111).
 
 ## Source and license
 
-Based on [Event2Audio](https://github.com/dgalor/Event2Audio/tree/30195c6155b730511dd90172bf420a21dca8ea25) by **Mingxuan Cai, Dekel Galor, Amit Kohli, Jacob Yates and Laura Waller**. [Source and contribution details](NOTICE.md).
+[NOTICE.md](NOTICE.md) records the retained implementation’s origins and EventizedAudio’s additions.
 
 Original implementation: [MIT license](LICENSE). New additions: [LICENSE-branding](LICENSE-branding). External component and dataset limits are recorded in the source notice.
