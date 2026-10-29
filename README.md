@@ -99,6 +99,4 @@ Maintained by [nazeeh111](https://github.com/nazeeh111).
 
 ## Source and license
 
-[NOTICE.md](NOTICE.md) records the retained implementation’s origins and EventizedAudio’s additions.
-
-Original implementation: [MIT license](LICENSE). New additions: [LICENSE-branding](LICENSE-branding). External component and dataset limits are recorded in the source notice.
+Original implementation: [MIT license](LICENSE). New additions: [LICENSE-branding](LICENSE-branding). External components and research data retain their own terms; neither is bundled.
