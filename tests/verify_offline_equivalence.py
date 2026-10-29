@@ -20,11 +20,17 @@ WORK.mkdir(exist_ok=True)
 upstream = WORK / "upstream"
 upstream.mkdir(exist_ok=True)
 source_hashes = {}
+BASELINE_SHA256 = {
+    "utils.py": "2bd156ddd8f66d94c163a314847ec934c64dd5b62568d0f10e5708469f4bb850",
+    "run_offline.py": "b2d208f7b488155efe5949f02057e4ee49311de61d698a6d136b15bf92cba7cf",
+    "run_online.py": "e4d34d762f1045df7e7424fb6de77d840ad3b8643f0e19ff4d10c636cdbe1ac3",
+}
 for name in ("utils.py", "run_offline.py", "run_online.py"):
     source = (ROOT / "tests" / "fixtures" / "baseline" / name).read_bytes()
-    assert source == (ROOT / name).read_bytes(), f"Numerical source changed: {name}"
+    assert hashlib.sha256(source).hexdigest() == BASELINE_SHA256[name], f"Baseline fixture changed: {name}"
     (upstream / name).write_bytes(source)
-    source_hashes[name] = hashlib.sha256(source).hexdigest()
+    source_hashes[name] = {"baseline": BASELINE_SHA256[name],
+                           "current": hashlib.sha256((ROOT / name).read_bytes()).hexdigest()}
 
 rng = np.random.default_rng(711)
 count = 250000

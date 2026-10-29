@@ -15,7 +15,6 @@ import numpy as np
 from tqdm import tqdm
 from utils import align, butter_highpass_filter, offline_optical_flow
 import time
-import math
 #%%
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -53,10 +52,10 @@ good_inds = (events["x"] <= 100) & (events["y"] <= 100)
 events = events[good_inds]
 events["t"] = events["t"] - events["t"].min()
 
-nbins = int(math.ceil(events["t"].max()*1e-6 * f))
-
 relative_t = (events["t"] / 1e6) * f
 coord_t = np.round(relative_t).astype(np.uint32)
+# Include the last rounded event index, even on an exact bin boundary.
+nbins = int(coord_t.max()) + 1
 coord_p = events["p"].astype(np.uint32)
 
 w = events["x"].max() + 1
