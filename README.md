@@ -1,14 +1,10 @@
 # EventizedAudio
 
-**From changes in light to reconstructed sound.** Recover an audio signal from event-camera recordings of a vibrating surface. Run the offline optical-flow pipeline on CPU, or use the online method with the separate Metavision SDK.
+**Reconstruct sound from event-camera vibration recordings.**
 
-Bring a structured event recording **and its matching reference audio**. This is a research reproduction workflow, with alignment and speech-quality evaluation built into both methods. It does not record from a camera or microphone, and it is not a reference-free audio extractor.
+Use changes in laser speckle patterns to recover audio with optical flow. Bring a structured event recording and its matching reference audio for alignment and evaluation. This research workflow processes recordings; it does not capture them.
 
-[Research data](https://berkeley.box.com/s/4kdfmdx84xhot3145qkhnh1s2qg5w55e) · [Verification and limits](docs/verification.md)
-
-## From events to audio
-
-Event cameras report pixel-level brightness changes as a stream of events. The reconstruction uses this stream to measure fast motion in laser speckle patterns and reconstruct audio. Two paths are included: offline dense optical flow, and online time-gradient optical flow.
+[Set up the CPU pipeline](#set-up) · [Try a synthetic input](#try-without-research-data) · [Research data](https://berkeley.box.com/s/4kdfmdx84xhot3145qkhnh1s2qg5w55e)
 
 <img src="assets/vibration-sensing.png" alt="Optical vibration sensing illustration showing event-based optical vibration sensing" width="100%">
 
@@ -91,7 +87,7 @@ It generates 250,000 events and a reference signal locally, runs the retained ba
 
 ## Verification and limits
 
-See [the verification record](docs/verification.md) for behavioral comparisons, the preserved processing interfaces, and environment limitations. Defaults, numerical processing and successful WAV bytes/names are preserved for the verified synthetic control. Batch output admission, cache reuse and failure publication follow the separate [preservation policy](docs/batch-preservation.md).
+See [verification and limits](docs/verification.md) for behavioral comparisons, the preserved processing interfaces, and environment limitations. Defaults, numerical processing and successful WAV bytes/names are preserved for the verified synthetic control. Batch output admission, cache reuse and failure publication follow the separate [preservation policy](docs/batch-preservation.md).
 
 Batch processing validates input folders and unique matching ground-truth names, supports paths containing spaces, skips intact output pairs, and stops with the child process exit code if reconstruction fails. A child failure publishes no staged products for that recording; publication errors can retain new partial products, as described in the policy. Empty, degenerate, or malformed event arrays are not validated by the reconstruction algorithms.
 
